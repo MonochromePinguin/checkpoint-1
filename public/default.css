@@ -1,0 +1,47 @@
+body {
+    padding: 4vw;
+    text-align: center
+}
+
+article {
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+
+aside.error { padding: 1rem; }
+
+body > h1 { color: darkred }
+
+h1, h2 { margin: 0.3rem }
+
+article h2,
+article h3 { text-align: right }
+
+h2 span { color: darkblue }
+
+h3 { font-size: 1rem }
+
+article > h1 { color: blue }
+
+article p {
+    text-align: left;
+    text-indent: 1rem;
+}
+
+.error {
+    display: inline-block;
+    padding: 0.3rem;
+    margin-top: 1rem;
+
+    color: red;
+    font-weight: bold;
+    border: 1px solid red;
+}
+
+
+/* admin page styling */
+textarea {
+    min-width: 90%;
+    min-height: 90%;
+}
