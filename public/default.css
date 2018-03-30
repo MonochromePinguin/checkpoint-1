@@ -1,13 +1,14 @@
+/* bootstap fix for responsive tables */
+@-moz-document url-prefix() {
+  fieldset { display: table-cell; }
+}
+
+
 body {
     padding: 4vw;
     text-align: center
 }
 
-article {
-    margin: 1rem;
-    padding: 0.5rem;
-    border: 1px solid black;
-}
 
 aside.error { padding: 1rem; }
 
@@ -15,12 +16,17 @@ body > h1 { color: darkred }
 
 h1, h2 { margin: 0.3rem }
 
+/*article {
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 1px solid black;
+}
 article h2,
 article h3 { text-align: right }
-
+*/
 h2 span { color: darkblue }
 
-h3 { font-size: 1rem }
+/*h3 { font-size: 1rem }
 
 article > h1 { color: blue }
 
@@ -28,7 +34,7 @@ article p {
     text-align: left;
     text-indent: 1rem;
 }
-
+*/
 .error {
     display: inline-block;
     padding: 0.3rem;
@@ -40,8 +46,4 @@ article p {
 }
 
 
-/* admin page styling */
-textarea {
-    min-width: 90%;
-    min-height: 90%;
-}
+thead { font-weight: bold }

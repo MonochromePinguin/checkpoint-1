@@ -35,8 +35,6 @@ Class PDOconnection {
 
 	}
 
-    #TODO __destruct() {}
-
     /**
     * @return string
     */
@@ -58,7 +56,8 @@ Class PDOconnection {
         $this->result = $this->conn->query(
             'SELECT civ.civility, c.lastName, c.firstName
             FROM contact AS c JOIN civility AS civ
-            ON c.civility_id = civ.id' );
+            ON c.civility_id = civ.id
+            ORDER BY c.lastName ASC' );
     }
     
 

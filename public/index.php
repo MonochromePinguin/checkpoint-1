@@ -6,7 +6,6 @@ require_once '../src/functions.php';
 require_once '../class/Autoload.php';
 Autoload::on();
 
-use \PDO;
 use DBconnection; 
 
 
@@ -81,15 +80,16 @@ else {
     $conn->doQuery();
 ?>
 
-    <table>
-        <thead>
-            <tr>
-                <td>Civilité</td>
-                <td>NOM et prénom</td>
-            </tr>
-        </thead>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <td>Civilité</td>
+                    <td>NOM et prénom</td>
+                </tr>
+            </thead>
 
-        <tbody>
+            <tbody>
 <?php
     while ( $data = $conn->fetchAsAssoc() )
     {
@@ -102,8 +102,9 @@ else {
 ?>
     <!-- #TODO : ajouter <tfoot> si nbentrées > valeur -->
 
-        </tbody>
-    </table>
+           </tbody>
+        </table>
+    </div>
 
   </body>
 </html>
