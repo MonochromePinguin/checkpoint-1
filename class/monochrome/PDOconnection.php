@@ -1,6 +1,12 @@
 <?php
 namespace monochrome;
 
+/**
+* @file
+* Define the "PDOconnection class, a wrapper around a PDO connection"
+*/
+
+
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../data/constants.php';
 
 use \PDO;

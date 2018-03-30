@@ -2,6 +2,12 @@
 namespace monochrome;
 
 /**
+ * @file
+ * Common text formating functions
+ */
+
+
+/**
  * multibytes ucfirst()
  *
  * @param  string $str
