@@ -1,7 +1,7 @@
 <?php
 namespace monochrome;
 
-require_once 'constants.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../data/constants.php';
 
 use \PDO;
 

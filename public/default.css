@@ -21,15 +21,8 @@ body > h2 {
 h1, h2 { margin: 0.3rem }
 
 
-/*h3 { font-size: 1rem }
+body > hr { border: 2px solid darkred }
 
-article > h1 { color: blue }
-
-article p {
-    text-align: left;
-    text-indent: 1rem;
-}
-*/
 .error {
     display: inline-block;
     padding: 0.3rem;

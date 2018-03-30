@@ -108,5 +108,33 @@ else {
         </table>
     </div>
 
+    <hr>
+
+    <h2>Addition d'entrées</h2>
+
+    <form method="POST" action="#" >
+        <input type="submit" value="Ajouter une nouvelle entrée">
+
+        <fieldset name="gender">
+            <legend>Genre de la personne</legend>
+            <select name="civility">
+                <option value="Fem" selected>Féminin</option>
+                <option value="Mal" selected>Masculin</option>
+                <option value="oth" selected>Autre</option>
+            </select>
+        </fieldset>
+
+        <fieldset name="firstName">
+            <legend>Prénom</legend>
+            <input name="firstName" placeholder="Prénom ..." required>
+          </fieldset>
+
+        <fieldset name="lastName">
+            <legend>Nom</legend>
+            <input name="lastName" placeholder="Nom de famille ..." required>
+        </fieldset>
+
+    </form>
+
   </body>
 </html>
