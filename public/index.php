@@ -1,6 +1,8 @@
 <?php
 namespace monochrome;
 
+require_once '../src/functions.php';
+
 require_once '../class/Autoload.php';
 Autoload::on();
 
@@ -70,16 +72,38 @@ $conn = new PDOconnection();
 
   <body>
 <?php
+if ( ! $conn->getSuccess() )
     #this part is shown in case of connection error
-    if ( ! $conn->getSuccess() )
-        echo showError( DEBUGING ? $conn->getLastMsg() : NULL );
-    else {
+    echo showError( DEBUGING ? $conn->getLastMsg() : NULL );
+else {
+    
+    #TODO : add error handling
+    $conn->doQuery();
 ?>
-    <p>
-        Connecté avec succès
-    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <td>Civilité</td>
+                <td>NOM et prénom</td>
+            </tr>
+        </thead>
+
+        <tbody>
 <?php
-  }
+    while ( $data = $conn->fetchAsAssoc() )
+    {
+        echo formatTableRow($data['civility'],
+                    fullName( $data['firstName'], $data['lastName'] )
+             );
+    }
+}
+
 ?>
+    <!-- #TODO : ajouter <tfoot> si nbentrées > valeur -->
+
+        </tbody>
+    </table>
+
   </body>
 </html>

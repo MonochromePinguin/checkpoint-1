@@ -9,12 +9,15 @@ use \PDO;
 Class PDOconnection {
 
     /**
-    * @var PDO
+    * @var PDO $conn
     */ 
     private $conn = NULL;
 
+    #TODO : write phpdoc
+    private $result = NULL;
+
     /**
-    * @var string
+    * @var string $lastMsg
     */
     private $lastMsg = NULL;
 
@@ -46,6 +49,25 @@ Class PDOconnection {
     */
     function getSuccess() : bool {
         return ( NULL != $this->conn );
+    }
+
+
+    #TODO : écrire PHPDoc
+    function doQuery() {
+        #TODO : requếte préparée !
+        $this->result = $this->conn->query(
+            'SELECT civ.civility, c.lastName, c.firstName
+            FROM contact AS c JOIN civility AS civ
+            ON c.civility_id = civ.id' );
+    }
+    
+
+    /**
+    * @return array|NULL
+    */
+    function fetchAsAssoc() {
+        #TODO : requếte préparée !
+        return $this->result->fetch( PDO::FETCH_ASSOC );
     }
 
 }
