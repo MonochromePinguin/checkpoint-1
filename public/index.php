@@ -70,6 +70,8 @@ $conn = new PDOconnection();
   </head>
 
   <body>
+    <h1>Content of the SQL database</h1>
+    <h2>obtained with PDO</h2>
 <?php
 if ( ! $conn->getSuccess() )
     #this part is shown in case of connection error

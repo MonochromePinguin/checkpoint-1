@@ -10,21 +10,16 @@ body {
 }
 
 
-aside.error { padding: 1rem; }
+aside.error { padding: 1rem }
 
 body > h1 { color: darkred }
+body > h2 {
+    color: darkblue;
+    margin-bottom: 3rem;
+}
 
 h1, h2 { margin: 0.3rem }
 
-/*article {
-    margin: 1rem;
-    padding: 0.5rem;
-    border: 1px solid black;
-}
-article h2,
-article h3 { text-align: right }
-*/
-h2 span { color: darkblue }
 
 /*h3 { font-size: 1rem }
 
