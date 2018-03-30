@@ -2,7 +2,7 @@
 
     define( 'HOST', 'localhost' );
 	define( 'ENGINE', 'mysql' );
-    define( 'BDD', 'test' );
+    define( 'BDD', 'checkpoint1' );
 
     define( 'USER', 'checkpointeur' );
-    define( 'MDP', 'testus\'z back !' );
+    define( 'MDP', 'testus\'z backus !' );
