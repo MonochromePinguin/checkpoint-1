@@ -1,3 +1,5 @@
+● lu ! ●
+
 Dans ce checkpoint, tu vas devoir créer un début de répertoire de contacts.
 
 **Etapes :**
