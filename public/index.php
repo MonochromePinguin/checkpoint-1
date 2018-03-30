@@ -9,22 +9,23 @@ Autoload::on();
 use DBconnection; 
 
 
-#are we in DEV mode ?
-define( 'DEBUGING', true );
+// are we in DEV mode ?
+define('DEBUGING', true);
 
 /**
-*  the returned string contains a div containing an errormessage
-* @param string|NULL
-* @return string
-*/
+ *  the returned string contains a div containing an errormessage
+ *
+ * @param  string|NULL
+ * @return string
+ */
 function showError( $mssg = 'Erreur non spécifiée.' ) : string
 {
     return "<aside class='error'>\n<h2>Désolé&nbsp!</h2>\n<p>
         Une erreur est survenue.<br>
         Veuillez contacter l'opérateur du site.<br>"
-        . ( NULL != $mssg ?
+        . ( null != $mssg ?
                 "Message d'erreur&nbsp:<br>\n"
-                . htmlspecialchars( addslashes( $mssg ) )
+                . htmlspecialchars(addslashes($mssg))
               :
                 ''
         )
@@ -73,12 +74,12 @@ $conn = new PDOconnection();
     <h1>Content of the SQL database</h1>
     <h2>obtained with PDO</h2>
 <?php
-if ( ! $conn->getSuccess() )
-    #this part is shown in case of connection error
-    echo showError( DEBUGING ? $conn->getLastMsg() : NULL );
-else {
+if (! $conn->getSuccess() ) {
+    // this part is shown in case of connection error
+    echo showError(DEBUGING ? $conn->getLastMsg() : null);
+} else {
     
-    #TODO : add error handling
+    // TODO : add error handling
     $conn->doQuery();
 ?>
 
@@ -93,12 +94,13 @@ else {
 
             <tbody>
 <?php
-    while ( $data = $conn->fetchAsAssoc() )
+while ( $data = $conn->fetchAsAssoc() )
     {
-        echo formatTableRow($data['civility'],
-                    fullName( $data['firstName'], $data['lastName'] )
-             );
-    }
+    echo formatTableRow(
+        $data['civility'],
+        fullName($data['firstName'], $data['lastName'])
+    );
+}
 }
 
 ?>

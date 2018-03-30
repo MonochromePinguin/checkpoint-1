@@ -1,8 +1,8 @@
 <?php
 
-    define( 'HOST', 'localhost' );
-	define( 'ENGINE', 'mysql' );
-    define( 'BDD', 'checkpoint1' );
+    define('HOST', 'localhost');
+    define('ENGINE', 'mysql');
+    define('BDD', 'checkpoint1');
 
-    define( 'USER', 'checkpointeur' );
-    define( 'MDP', 'testus\'z backus !' );
+    define('USER', 'checkpointeur');
+    define('MDP', 'testus\'z backus !');
