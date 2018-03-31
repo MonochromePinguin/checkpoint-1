@@ -3,25 +3,36 @@
   fieldset { display: table-cell; }
 }
 
+:root {
+    --backColor : lightgrey;
+}
+
 
 body {
     padding: 4vw;
-    text-align: center
+    text-align: center;
+
+    background-color: lightgrey;
+    background-color: var(--backColor);   
 }
+
+
+body > h1 {
+    margin: 0.3rem;
+    color: darkred;
+}
+
+h2 {
+    margin: 0.3rem;
+    margin-bottom: 3rem;
+    color: darkblue;
+}
+
+
+body > hr { border: 1px solid darkred }
 
 
 aside.error { padding: 1rem }
-
-body > h1 { color: darkred }
-body > h2 {
-    color: darkblue;
-    margin-bottom: 3rem;
-}
-
-h1, h2 { margin: 0.3rem }
-
-
-body > hr { border: 2px solid darkred }
 
 .error {
     display: inline-block;
@@ -34,4 +45,51 @@ body > hr { border: 2px solid darkred }
 }
 
 
-thead { font-weight: bold }
+table { border: 2px solid darkred }
+thead {
+    font-weight: bold;
+    font-style: italic;
+}
+
+tr:hover { background-color: #f0d0d0 }
+
+.table > thead > tr > th,
+td { border: 1px solid darkred }
+
+
+/* used to make #unhider1 covered by the section.toggableHiding */
+.myContainer { position: relative }
+
+/* CSS + checkbox trick to show/hide the form's section */
+.unhider { display: none }
+
+.toggableHiding {
+    width: 100%;
+    position: absolute;
+
+    display: none;
+
+    background-color: lightgrey;
+    background-color: var(--backColor);   
+}
+.unhider:checked + .toggableHiding { display: block }
+
+.toggableHiding > h2 {
+    clear: both;
+    margin: 2rem;
+}
+
+
+form {
+    border-radius : 1rem;
+    margin: 2rem;
+}
+
+fieldset {
+    border: 1px solid darkred;
+    margin: 1rem;
+}
+
+label,
+input,
+button { margin: 1rem }
