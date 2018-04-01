@@ -56,8 +56,8 @@ function formatError($mssg = 'Erreur non spécifiée.') : string
         Une erreur est survenue.<br>
         Veuillez contacter l'opérateur du site.<br>"
         . ( null != $mssg ?
-                "Message d'erreur&nbsp:<br>\n"
-                . htmlspecialchars(addslashes($mssg))
+                "Message d'erreur&nbsp:<br>\n<span class='norm'>"
+                . htmlspecialchars(addslashes($mssg)) . '</span>'
               :
                 ''
         )

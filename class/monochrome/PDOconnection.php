@@ -10,15 +10,16 @@ use \PDO;
 class PDOconnection
 {
     /**
-     * @var PDO $conn
+     * @var PDO $conn  store the PDO object
      */
     private $conn = null;
 
-    // TODO : write phpdoc
+    /**
+    * @var $result $PDOstatement
     private $result = null;
 
     /**
-     * @var string $lastMsg
+     * @var string $lastMsg Last (error) message returned by PDO
      */
     private $lastMsg = null;
 
@@ -56,7 +57,6 @@ class PDOconnection
     }
 
 
-    // TODO : écrire PHPDoc
     public function doQuery()
     {
         // TODO : requếte préparée !

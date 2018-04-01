@@ -17,7 +17,7 @@ body {
 }
 
 
-body > h1 {
+header > h1 {
     margin: 0.3rem;
     color: darkred;
 }
@@ -29,8 +29,10 @@ h2 {
 }
 
 
-body > hr { border: 1px solid darkred }
+header > hr { border: 1px solid darkred }
 
+
+/* error messages */
 
 aside.error { padding: 1rem }
 
@@ -44,6 +46,10 @@ aside.error { padding: 1rem }
     border: 1px solid red;
 }
 
+.norm { color: black }
+
+
+/* records table */
 
 table { border: 2px solid darkred }
 thead {
@@ -92,4 +98,5 @@ fieldset {
 
 label,
 input,
-button { margin: 1rem }
+button,
+.btn { margin: 1rem }
