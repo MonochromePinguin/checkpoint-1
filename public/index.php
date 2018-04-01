@@ -60,10 +60,10 @@ if (0 != count($_GET)) {
 
 
         #validation of the value of the <select> element
-        $gotValue = $_POST['civility'];
+        $gotCivValue = $_POST['civility'];
         $res = [];
         #
-        if (! in_array($gotValue, $allowedValuesForGender)) {
+        if (! in_array($gotCivValue, $allowedValuesForGender)) {
             $errFlag = true;
             $errorDivs['civility'] =
                 '<div class="error">Veuillez sélectionner un genre</div>';
@@ -72,21 +72,40 @@ if (0 != count($_GET)) {
             #each <option> element inside the <select> can
             # have the "selected" attribute ...
             foreach ($allowedValuesForGender as $val) {
-                $res[$val] = ( $val == $gotValue ) ?
+                $res[$val] = ( $val == $gotCivValue ) ?
                                 'selected'
                                 : '';
             }
         }
         $entry['civility'] = $res;
 
+
+        #we keep showing the admin part if something went wrong
+        $showingAdmin = $errFlag;
      
-        # validation is done – now we try the request
-        if ($errFlag) {
-            $showingAdmin = true;
-        } else {
-            $showingAdmin = false;
-            $entry = [];
-            echo "La requête est ok !";
+        # validation is done – if all is ok we do the request
+        if (! $errFlag && $conn->getSuccess()) {
+            #convert the gotten value to a string usable into the DB
+            $traductCivValue = [ 'F' => 'Mme.',
+                          'H' => 'M.',
+                          'I' => '...'
+                        ];
+
+            #start the request
+            if ($conn->storeRecord(
+                $traductCivValue[$gotCivValue],
+                $entry['firstName'],
+                $entry['lastName']
+            )) {
+                #request is ok, we no more need to show anything
+                $entry = [];
+            } else {
+                #something went bad : we need to show the info
+                # and an error message
+                $showingAdmin = true;
+                $errorDivs['AfterForm'] =
+                    formatError(DEBUGING ? $conn->getLastMsg() : null);
+            }
         }
     }
 }
@@ -177,6 +196,7 @@ while ($data = $conn->fetchAsAssoc()) {
         <!-- the only role of this input is to toggle the visibility of the
          following section -->
         <input type="checkbox" role="aria-hidden"
+                autocomplete="off"
                 <?= $showingAdmin ? 'checked' : '' ?>
                 id="unhider1" class="unhider">
         
@@ -202,7 +222,7 @@ while ($data = $conn->fetchAsAssoc()) {
                         Genre
                         <?= $errorDivs['civility'] ?? '' ?>
                         <select name="civility" id="civility" required>
-                            <option value=""
+                            <option value="" default
                                 <?= $entry['civility']['unchoosen'] ?? '' ?> >
                                 choisir ...
                             </option>
@@ -261,6 +281,9 @@ while ($data = $conn->fetchAsAssoc()) {
 -->                </div>
 
             </form>
+
+            <!-- message if something went wrong during the BdD update -->
+            <?= $errorDivs['AfterForm'] ?? '' ?>
 
         </section>
 
