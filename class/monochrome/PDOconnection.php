@@ -2,22 +2,16 @@
 namespace monochrome;
 
 /**
-* @file
 * Define the "PDOconnection class, a wrapper around a PDO connection"
 */
 
-
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../data/constants.php';
-
 use \PDO;
 
-    
-Class PDOconnection
+class PDOconnection
 {
-
     /**
      * @var PDO $conn
-     */ 
+     */
     private $conn = null;
 
     // TODO : write phpdoc
@@ -29,25 +23,26 @@ Class PDOconnection
     private $lastMsg = null;
 
 
-    function __construct() 
+    public function __construct()
     {
+        #constants definition are inside this file
+        require_once $_SERVER['DOCUMENT_ROOT'] . '/../data/PDOconnectionConstants.php';
+
         try {
             $this->conn = new \PDO(
                 ENGINE . ':host=' . HOST . ';dbname=' . BDD . ';',
-                USER, MDP 
+                USER,
+                MDP
             );
-        }
-        catch (\PDOException $e)
-        {
+        } catch (\PDOException $e) {
             $this->lastMsg = $e->getMessage();
         }
-
     }
 
     /**
      * @return string
      */
-    function getLastMsg() : string 
+    public function getLastMsg() : string
     {
         return $this->lastMsg;
     }
@@ -55,21 +50,21 @@ Class PDOconnection
     /**
      * @return bool
      */
-    function getSuccess() : bool 
+    public function getSuccess() : bool
     {
         return ( null != $this->conn );
     }
 
 
     // TODO : écrire PHPDoc
-    function doQuery() 
+    public function doQuery()
     {
         // TODO : requếte préparée !
         $this->result = $this->conn->query(
             'SELECT civ.civility, c.lastName, c.firstName
             FROM contact AS c JOIN civility AS civ
             ON c.civility_id = civ.id
-            ORDER BY c.lastName ASC' 
+            ORDER BY c.lastName ASC'
         );
     }
     
@@ -77,10 +72,9 @@ Class PDOconnection
     /**
      * @return array|NULL
      */
-    function fetchAsAssoc() 
+    public function fetchAsAssoc()
     {
         // TODO : requếte préparée !
         return $this->result->fetch(PDO::FETCH_ASSOC);
     }
-
 }

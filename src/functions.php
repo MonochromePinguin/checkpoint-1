@@ -2,7 +2,6 @@
 namespace monochrome;
 
 /**
- * @file
  * Common text formating functions
  */
 
@@ -13,7 +12,7 @@ namespace monochrome;
  * @param  string $str
  * @return string
  */
-function mb_strfirsttoupper( string $str ) : string 
+function mb_strfirsttoupper(string $str) : string
 {
     return mb_strtoupper(mb_substr($str, 0, 1))
            . mb_strtolower(mb_substr($str, 1));
@@ -25,12 +24,13 @@ function mb_strfirsttoupper( string $str ) : string
  * @param string $lastName
  * @return string
  */
-function fullName( string $firstName = '',
-    string $lastName = '' 
+function fullName(
+    string $firstName = '',
+    string $lastName = ''
 ) {
     return mb_strtoupper($firstName)
         .' '
-        . mb_strfirsttoupper($lastName);    
+        . mb_strfirsttoupper($lastName);
 }
 
 /**
@@ -40,7 +40,26 @@ function fullName( string $firstName = '',
  * @param  string $str2
  * @return string
  */
-function formatTableRow( string $str1 = '', string $str2 = '' ) : string 
+function formatTableRow(string $str1 = '', string $str2 = '') : string
 {
     return "<tr>\n<td>" . $str1 ."</td>\n<td>" . $str2 . "</td>\n</tr>";
+}
+
+/**
+ *  the returned string contains a div containing an errormessage
+ * @param  string|NULL
+ * @return string
+ */
+function formatError($mssg = 'Erreur non spécifiée.') : string
+{
+    return "<aside class='error'>\n<h2>Désolé&nbsp!</h2>\n<p>
+        Une erreur est survenue.<br>
+        Veuillez contacter l'opérateur du site.<br>"
+        . ( null != $mssg ?
+                "Message d'erreur&nbsp:<br>\n"
+                . htmlspecialchars(addslashes($mssg))
+              :
+                ''
+        )
+        . "\n</p>\n</aside>\n";
 }

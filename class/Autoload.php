@@ -1,7 +1,5 @@
 <?php
-
 namespace monochrome;
-
 
 /**
  * Class Autoload
@@ -15,7 +13,7 @@ class Autoload
      */
     static private $dir;
 
-    static function on( string $rép = __DIR__ )
+    public static function on(string $rép = __DIR__)
     {
 
         // echo 'paramètre de ::on : ' . $rép . '<br>';
@@ -27,7 +25,7 @@ class Autoload
         
         // spl_autoload_register() peut prendre une méthode en paramètre :
         // il faut alors la fournir sous forme de tableau [ classe, fonct° ]
-        if (! spl_autoload_register([ __CLASS__, 'autoload' ]) ) {
+        if (! spl_autoload_register([ __CLASS__, 'autoload' ])) {
             throw new Exception('Erreur d\'entregistrement de la fonction d\'autochargement', 1);
         }
     }
@@ -39,7 +37,7 @@ class Autoload
      * @param string $classe nom de la classe à charger (sous forme de fichier séparé)
      */
 
-    static  private function autoload( string $classe )
+    private static function autoload(string $classe)
     {
         // echo 'paramètre de autoload : ' . $classe . '<br>';
         /// echo 'Fichier requis : ' . self::$dir . $classe . '.php' . '<br><br>';
@@ -47,6 +45,4 @@ class Autoload
         // charge le fichier dans un sous-dossier de $rép
         include self::$dir . str_replace('\\', '/', $classe) . '.php';
     }
-
 }
-
