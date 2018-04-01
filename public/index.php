@@ -171,7 +171,7 @@ if (null != $errorMsg) {
 while ($data = $conn->fetchAsAssoc()) {
     echo formatTableRow(
         $data['civility'],
-        fullName($data['firstName'], $data['lastName'])
+        fullName($data['lastName'], $data['firstName'])
     );
 }
 
